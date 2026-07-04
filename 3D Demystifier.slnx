@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="3D Demystifier/3D Demystifier.vcxproj" />
+  <Project Path="3D Demystifier/3D Demystifier.vcxproj" Id="41c0d7de-cb51-4d8b-b63d-d280e3e46352" />
 </Solution>
