@@ -6,6 +6,7 @@ int screenWidth = 1000;
 int screenHeight = 1000;
 float vertexRadius = 10;
 
+bool fly = false;
 float flyAwaySpeed = 0.01;
 
 /*
@@ -72,6 +73,15 @@ void flyAwayAnimUpdate() {
 	}
 }
 
+void setMotion() {
+	if (IsKeyDown(KEY_F)) {
+		fly = true;
+	}
+	if (IsKeyDown(KEY_S)) {
+		fly = false;
+	}
+}
+
 int main() {
 	InitWindow(screenWidth, screenHeight, "3D Demystifier");
 	SetTargetFPS(60);
@@ -79,12 +89,16 @@ int main() {
 	while (WindowShouldClose() == false) {
 		BeginDrawing();
 
+		setMotion();
+
 		// Update
-		flyAwayAnimUpdate();
+		if (fly) {
+			flyAwayAnimUpdate();
+		}
 
 		// Clear and Drawing
 		ClearBackground(BLACK);
-		drawVertices();
+		//drawVertices();
 		drawLines();
 
 		EndDrawing();
