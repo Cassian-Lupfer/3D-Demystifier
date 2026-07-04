@@ -30,7 +30,9 @@ std::vector<Vector3> vertices = {
 
 std::vector<std::vector<int>> faces = {
 	{0, 1, 2, 3},
-	{4, 5, 6, 7}
+	{4, 5, 6, 7},
+	{4, 0, 3, 7},
+	{1, 5, 6, 2}
 };
 
 Vector2 vec3ToVec2(Vector3 pos) {
@@ -57,8 +59,8 @@ void drawVertices() {
 void drawLines() {
 	for (int i = 0; i < faces.size(); i++) {
 		for (int j = 0; j < faces[i].size(); j++) {
-			Vector2 vertex1Pos = posToScreenPos(vec3ToVec2(vertices[j]));
-			Vector2 vertex2Pos = posToScreenPos(vec3ToVec2(vertices[(j + 1) % faces[i].size()]));
+			Vector2 vertex1Pos = posToScreenPos(vec3ToVec2(vertices[faces[i][j]]));
+			Vector2 vertex2Pos = posToScreenPos(vec3ToVec2(vertices[faces[i][(j + 1) % faces[i].size()]]));
 			DrawLine(vertex1Pos.x, vertex1Pos.y, vertex2Pos.x, vertex2Pos.y, GREEN);
 		}
 	}
